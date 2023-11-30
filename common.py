@@ -1,19 +1,10 @@
 from collections import OrderedDict, namedtuple
 
 import numpy as np
-# import pandas as pd
-# import requests
 import torch
 import torch.nn as nn
 from utils import yaml_load
 # from PIL import Image
-# from torch.cuda import amp
-# from ultralytics.utils.plotting import Annotator, colors, save_one_box
-
-
-# from dataloaders import exif_transpose, letterbox
-# from general import LOGGER, yaml_load
-# from torch_utils import copy_attr, smart_inference_mode
 
 
 class DetectMultiBackend(nn.Module):
@@ -21,7 +12,6 @@ class DetectMultiBackend(nn.Module):
     def __init__(self, weights='yolov5s.pt', data=None, fp16=True, device=torch.device('cuda:0')):
         super().__init__()
         # w = last_half.engine, str
-        # isinstance(a,b)判断a是不是b类型
         # w = str(weights[0] if isinstance(weights, list) else weights)
         # stride = 32  # default stride
         # tensorrt

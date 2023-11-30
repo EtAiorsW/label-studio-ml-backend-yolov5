@@ -9,8 +9,8 @@ from label_studio_ml.utils import get_single_tag_keys, DATA_UNDEFINED_NAME
 from utils import yaml_load
 
 logger = logging.getLogger(__name__)
-model_name = '/home/wanggq/label-studio-ml-backend/label_studio_ml_backend_yolov5/yolov5l_1280_11_14_4060.engine'
-class_name = '/home/wanggq/label-studio-ml-backend/label_studio_ml_backend_yolov5/NG.yaml'
+model_name = ''
+class_name = ''
 model = loadmodel(model_name, class_name)
 
 
