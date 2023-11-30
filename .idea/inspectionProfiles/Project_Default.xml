@@ -1,0 +1,36 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="23">
+            <item index="0" class="java.lang.String" itemvalue="thop" />
+            <item index="1" class="java.lang.String" itemvalue="opencv-python" />
+            <item index="2" class="java.lang.String" itemvalue="gitpython" />
+            <item index="3" class="java.lang.String" itemvalue="ultralytics" />
+            <item index="4" class="java.lang.String" itemvalue="nvidia-pyindex" />
+            <item index="5" class="java.lang.String" itemvalue="protobuf" />
+            <item index="6" class="java.lang.String" itemvalue="polygraphy" />
+            <item index="7" class="java.lang.String" itemvalue="pytest" />
+            <item index="8" class="java.lang.String" itemvalue="ipyfilechooser" />
+            <item index="9" class="java.lang.String" itemvalue="plotly" />
+            <item index="10" class="java.lang.String" itemvalue="opencv-python-headless" />
+            <item index="11" class="java.lang.String" itemvalue="netron" />
+            <item index="12" class="java.lang.String" itemvalue="jupyter-dash" />
+            <item index="13" class="java.lang.String" itemvalue="pandas" />
+            <item index="14" class="java.lang.String" itemvalue="jupyter" />
+            <item index="15" class="java.lang.String" itemvalue="onnx_graphsurgeon" />
+            <item index="16" class="java.lang.String" itemvalue="graphviz" />
+            <item index="17" class="java.lang.String" itemvalue="colored" />
+            <item index="18" class="java.lang.String" itemvalue="jupyterlab" />
+            <item index="19" class="java.lang.String" itemvalue="dtale" />
+            <item index="20" class="java.lang.String" itemvalue="ipywidgets" />
+            <item index="21" class="java.lang.String" itemvalue="openpyxl" />
+            <item index="22" class="java.lang.String" itemvalue="qgrid" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

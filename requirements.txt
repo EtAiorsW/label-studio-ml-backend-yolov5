@@ -1,0 +1,6 @@
+label-studio-ml @ git+https://github.com/HumanSignal/label-studio-ml-backend.git
+opencv-python~=4.8.1.78
+numpy~=1.24.3
+torch~=2.1.1
+torchvision~=0.16.1
+pyyaml~=6.0.1

@@ -1,3 +1,5 @@
 /*.engine
 /__pycache__
 /*.yaml
+/*.name
+/*.xml
