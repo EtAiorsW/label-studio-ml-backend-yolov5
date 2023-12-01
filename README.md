@@ -7,7 +7,7 @@ TensorRT >= 8.6.1
 pytorch >= 2.1.1
 opencv-python ~= 4.8.1.78
 ```
-!!!There are some bugs in label-studio = 1.9.x version!!!
+！！！There are some bugs in label-studio = 1.9.x version！！！
 
 ### model.py
 ```
