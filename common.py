@@ -4,16 +4,12 @@ import numpy as np
 import torch
 import torch.nn as nn
 from utils import yaml_load
-# from PIL import Image
 
 
 class DetectMultiBackend(nn.Module):
     # YOLOv5 MultiBackend class for python inference on various backends
     def __init__(self, weights='yolov5s.pt', data=None, fp16=True, device=torch.device('cuda:0')):
         super().__init__()
-        # w = last_half.engine, str
-        # w = str(weights[0] if isinstance(weights, list) else weights)
-        # stride = 32  # default stride
         # tensorrt
         # LOGGER.info(f'Loading {weights} for TensorRT inference...')
         import tensorrt as trt  # https://developer.nvidia.com/nvidia-tensorrt-download
