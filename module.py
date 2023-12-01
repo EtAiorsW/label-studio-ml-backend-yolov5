@@ -5,11 +5,7 @@ from utils import non_max_suppression, scale_boxes, letterbox
 
 
 def loadmodel(weights='last_half.engine', data='NG.yaml', imgsz=(1280, 1280)):
-    # Load model
-    # device = torch.device('cuda:0')
     model = DetectMultiBackend(weights, data=data)
-    # stride, names = model.stride, model.names
-    # imgsz = check_img_size(imgsz, s=stride)  # check image size
     model.warmup(imgsz=(1, 3, *imgsz))  # warmup
     return model
 
@@ -36,7 +32,6 @@ def nms(pred, im, im0s, conf_thres=0.25, iou_thres=0.45, classes=None, agnostic_
     if len(im.shape) == 3:
         im = im[None]
     for _, det in enumerate(pred):  # per image
-        # im0 = im0s.copy()
         if len(det):
             # Rescale boxes from img_size to im0 size
             det[:, :4] = scale_boxes(im.shape[2:], det[:, :4], im0s.shape).round()
