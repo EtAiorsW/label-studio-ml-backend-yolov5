@@ -8,16 +8,11 @@ import yaml
 def letterbox(im, new_shape=(640, 640), color=(255, 255, 255)):
     # Resize and pad image while meeting stride-multiple constraints
     shape = im.shape[:2]  # current shape [height, width]
-    # if isinstance(new_shape, int):
-    #     new_shape = (new_shape, new_shape)
 
     # Scale ratio (new / old)
     r = min(new_shape[0] / shape[0], new_shape[1] / shape[1])
-    # if not scaleup:  # only scale down, do not scale up (for better val mAP)
-    #     r = min(r, 1.0)
 
     # Compute padding
-    # ratio = r, r  # width, height ratios
     new_unpad = int(round(shape[1] * r)), int(round(shape[0] * r))
     dw, dh = (new_shape[1] - new_unpad[0]) / 2, (new_shape[0] - new_unpad[1]) / 2  # wh padding
 
