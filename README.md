@@ -23,7 +23,7 @@ names:
 ```
 ### runs
 ```
-label-studio-ml start label_studio_ml_backend_yolov5
+label-studio-ml start label-studio-ml-backend-yolov5
 ```
 ### reference
 ```
