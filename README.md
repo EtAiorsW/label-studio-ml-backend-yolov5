@@ -1,7 +1,13 @@
 ## YOLOv5 backend for Label Studio ML Backend with TensorRT support
+
+### update
+```
+2024-05-09: TensorRT 10 is supported
+```
+
 ### requirements
 ```
-label-studio = 1.8.2/1.10.0rc6
+label-studio = 1.8.2/1.12.0
 label-studio-ml = 1.0.9
 TensorRT >= 8.6.1
 pytorch >= 2.1.1
