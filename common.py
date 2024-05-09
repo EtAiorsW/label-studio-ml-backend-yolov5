@@ -8,7 +8,7 @@ from utils import yaml_load
 
 class DetectMultiBackend(nn.Module):
     # YOLOv5 MultiBackend class for python inference on various backends
-    def __init__(self, weights='yolov5s.pt', data=None, fp16=True, device=torch.device('cuda:0')):
+    def __init__(self, weights='yolov5s.engine', data=None, fp16=True, device=torch.device('cuda:0')):
         super().__init__()
         # tensorrt
         # LOGGER.info(f'Loading {weights} for TensorRT inference...')
@@ -22,18 +22,34 @@ class DetectMultiBackend(nn.Module):
         output_names = []
         # fp16 = True
         dynamic = False
-        for i in range(model.num_bindings):
-            name = model.get_binding_name(i)
-            dtype = trt.nptype(model.get_binding_dtype(i))
-            if model.binding_is_input(i):
-                if -1 in tuple(model.get_binding_shape(i)):  # dynamic
-                    dynamic = True
-                    context.set_binding_shape(i, tuple(model.get_profile_shape(0, i)[2]))
-                if dtype == np.float16:
-                    fp16 = True
-            else:  # output
-                output_names.append(name)
-            shape = tuple(context.get_binding_shape(i))
+        is_trt10 = not hasattr(model, "num_bindings")
+        num = range(model.num_io_tensors) if is_trt10 else range(model.num_bindings)
+        for i in num:
+            if is_trt10:
+                name = model.get_tensor_name(i)
+                dtype = trt.nptype(model.get_tensor_dtype(name))
+                is_input = model.get_tensor_mode(name) == trt.TensorIOMode.INPUT
+                if is_input:
+                    if -1 in tuple(model.get_tensor_shape(name)):
+                        dynamic = True
+                        context.set_input_shape(name, tuple(model.get_tensor_profile_shape(name, 0)[1]))
+                        if dtype == np.float16:
+                            fp16 = True
+                else:
+                    output_names.append(name)
+                shape = tuple(context.get_tensor_shape(name))
+            else:  # TensorRT < 10.0
+                name = model.get_binding_name(i)
+                dtype = trt.nptype(model.get_binding_dtype(i))
+                if model.binding_is_input(i):
+                    if -1 in tuple(model.get_binding_shape(i)):  # dynamic
+                        dynamic = True
+                        context.set_binding_shape(i, tuple(model.get_profile_shape(0, i)[2]))
+                    if dtype == np.float16:
+                        fp16 = True
+                else:  # output
+                    output_names.append(name)
+                shape = tuple(context.get_binding_shape(i))
             im = torch.from_numpy(np.empty(shape, dtype=dtype)).to(device)
             bindings[name] = Binding(name, dtype, shape, im, int(im.data_ptr()))
         binding_addrs = OrderedDict((n, d.ptr) for n, d in bindings.items())
